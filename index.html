@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio 3D | Ingeniería</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="glass-header">
+        <div class="logo">Dev<span>3D</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle" class="btn-theme">
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+    </header>
+
+    <!-- Hero / Sobre mí -->
+    <section id="sobre-mi" class="hero-section">
+        <div class="hero-content glass-card">
+            <h1 class="gradient-text">Hola, soy un Desarrollador & Ingeniero</h1>
+            <p>Bienvenido a mi espacio. Construyo soluciones digitales combinando la precisión de la ingeniería con la creatividad del desarrollo web y experiencias 3D interactivas.</p>
+            <a href="#proyectos" class="btn-primary">Ver mis proyectos</a>
+        </div>
+        
+        <!-- Contenedor 3D -->
+        <div id="canvas-container" class="canvas-wrapper">
+            <!-- Loading overlay para Three.js -->
+            <div id="loading-overlay">Cargando Entorno 3D...</div>
+        </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="skills-section">
+        <h2 class="section-title">Mis Habilidades</h2>
+        <div class="skills-grid">
+            <div class="skill-card glass-card">
+                <h3>Frontend</h3>
+                <p>HTML5, CSS3, JavaScript, React, TailwindCSS.</p>
+            </div>
+            <div class="skill-card glass-card">
+                <h3>Gráficos 3D</h3>
+                <p>Three.js, WebGL, Blender, Rive Animations.</p>
+            </div>
+            <div class="skill-card glass-card">
+                <h3>Ingeniería</h3>
+                <p>Estructuras de datos, Algoritmos, Patrones de diseño.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos" class="projects-section">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-container">
+            <!-- Proyecto 1: Integración con Rive -->
+            <div class="project-card glass-card">
+                <div class="rive-placeholder">
+                    <span>Espacio reservado para animación de Rive (.riv)</span>
+                </div>
+                <div class="project-info">
+                    <h3>Sistema Interactivo (Rive)</h3>
+                    <p>Integración de animaciones vectoriales de alto rendimiento controladas por estado.</p>
+                    <a href="#" class="btn-secondary">Explorar</a>
+                </div>
+            </div>
+            <!-- Proyecto 2 -->
+            <div class="project-card glass-card">
+                <div class="project-image-placeholder"></div>
+                <div class="project-info">
+                    <h3>Dashboard Analítico</h3>
+                    <p>Visualización de datos de ingeniería en tiempo real usando APIs y WebSockets.</p>
+                    <a href="#" class="btn-secondary">Explorar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact-section">
+        <h2 class="section-title">Trabajemos Juntos</h2>
+        <div class="contact-container glass-card">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" rows="4" placeholder="¿En qué puedo ayudarte?" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Portafolio de Ingeniería. Creado con Three.js.</p>
+    </footer>
+
+    <!-- Import Map para Three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    
+    <!-- Script Principal -->
+    <script type="module" src="./script.js"></script>
+</body>
+</html>

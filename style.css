@@ -1,0 +1,401 @@
+/* Variables de CSS para modo oscuro y claro */
+:root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #13131a;
+    --text-primary: #f0f0f5;
+    --text-secondary: #a0a0b0;
+    --accent-color: #7f5af0;
+    --accent-hover: #6a44d8;
+    --gradient-start: #7f5af0;
+    --gradient-end: #2cb67d;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --transition-speed: 0.3s;
+}
+
+/* Variables para el modo claro */
+body.light-mode {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #1a1a24;
+    --text-secondary: #4a4a5a;
+    --accent-color: #6246ea;
+    --accent-hover: #4c33ce;
+    --gradient-start: #6246ea;
+    --gradient-end: #009688;
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+}
+
+/* Reset y Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    overflow-x: hidden;
+}
+
+/* Tipografía */
+h1, h2, h3 {
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+/* Componentes Glassmorphism */
+.glass-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.2rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(10, 10, 15, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+    transition: background var(--transition-speed) ease;
+}
+
+body.light-mode .glass-header {
+    background: rgba(248, 249, 250, 0.8);
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+body.light-mode .glass-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+}
+
+/* Navbar */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+nav ul.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+nav ul.nav-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+nav ul.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s;
+}
+
+nav ul.nav-links a:hover::after {
+    width: 100%;
+}
+
+.btn-theme {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.btn-theme:hover {
+    background: var(--glass-border);
+}
+
+/* Botones */
+.btn-primary {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background: var(--accent-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin-top: 1.5rem;
+}
+
+.btn-primary:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: transparent;
+    color: var(--accent-color);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid var(--accent-color);
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Secciones Generales */
+section {
+    padding: 6rem 5% 4rem;
+    min-height: 100vh;
+}
+
+/* Hero / Sobre mí */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-top: 8rem;
+}
+
+.hero-content {
+    flex: 1;
+    padding: 3rem;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+/* Contenedor Three.js */
+.canvas-wrapper {
+    flex: 1;
+    position: relative;
+    height: 500px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.light-mode .canvas-wrapper {
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.05);
+}
+
+#loading-overlay {
+    position: absolute;
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 1.2rem;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.skill-card h3 {
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-size: 1.5rem;
+}
+
+.skill-card p {
+    color: var(--text-secondary);
+}
+
+/* Proyectos */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.rive-placeholder, .project-image-placeholder {
+    height: 200px;
+    background: linear-gradient(135deg, rgba(127,90,240,0.1), rgba(44,182,125,0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.project-info {
+    padding: 2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    margin-bottom: 1rem;
+}
+
+.project-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* Contacto */
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-family: inherit;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    margin-top: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .hero-section {
+        flex-direction: column;
+    }
+    
+    .canvas-wrapper {
+        width: 100%;
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul.nav-links {
+        display: none; /* En un proyecto real aquí iría un menú hamburguesa */
+    }
+    
+    .hero-content {
+        padding: 2rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
