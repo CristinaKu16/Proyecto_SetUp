@@ -498,27 +498,104 @@ body.light-mode .canvas-wrapper {
 .social-icons-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
-    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .social-icon {
-    font-size: 2.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
     text-decoration: none;
-    display: inline-block;
-    filter: drop-shadow(0 0 10px var(--accent-color));
-    transition: filter 0.3s, transform 0.3s;
-    animation: bounceIcon 4s infinite ease-in-out;
+    padding: 0.5rem 1.2rem 0.5rem 0.5rem;
+    border-radius: 50px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--text-primary);
 }
 
-.social-icon:nth-child(1) { animation-delay: 0s; }
-.social-icon:nth-child(2) { animation-delay: 0.5s; }
-.social-icon:nth-child(3) { animation-delay: 1s; }
-.social-icon:nth-child(4) { animation-delay: 1.5s; }
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    box-shadow: 0 0 15px rgba(244, 114, 182, 0.3);
+    transition: all 0.4s ease;
+}
 
-.social-icon:hover {
-    filter: drop-shadow(0 0 25px var(--gradient-end));
-    animation-play-state: paused;
+.icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.4s ease;
+}
+
+.social-text {
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+
+/* Colores específicos por red social en hover */
+.social-icon.instagram:hover {
+    border-color: #E1306C;
+    box-shadow: 0 10px 20px -5px rgba(225, 48, 108, 0.4);
+    transform: translateY(-5px);
+}
+.social-icon.instagram:hover .icon-wrapper {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    box-shadow: 0 0 20px rgba(225, 48, 108, 0.6);
+}
+
+.social-icon.facebook:hover {
+    border-color: #1877F2;
+    box-shadow: 0 10px 20px -5px rgba(24, 119, 242, 0.4);
+    transform: translateY(-5px);
+}
+.social-icon.facebook:hover .icon-wrapper {
+    background: #1877F2;
+    box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
+}
+
+.social-icon.threads:hover {
+    border-color: var(--text-primary);
+    box-shadow: 0 10px 20px -5px rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px);
+}
+.social-icon.threads:hover .icon-wrapper {
+    background: #111111;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+body.light-mode .social-icon.threads:hover .icon-wrapper {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+body.light-mode .social-icon.threads:hover {
+    border-color: #000000;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon.discord:hover {
+    border-color: #5865F2;
+    box-shadow: 0 10px 20px -5px rgba(88, 101, 242, 0.4);
+    transform: translateY(-5px);
+}
+.social-icon.discord:hover .icon-wrapper {
+    background: #5865F2;
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.6);
+}
+
+.social-icon:hover .icon-wrapper svg {
+    transform: scale(1.15) rotate(5deg);
 }
 
 footer {
