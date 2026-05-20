@@ -149,49 +149,6 @@
             </div>
         </section>
 
-        <!-- Barra de Progreso de Habilidades (Opcional) -->
-        <section class="proficiency-section">
-            <h2 class="subsection-title">Nivel de Proficiencia</h2>
-            <div class="proficiency-grid">
-                <div class="proficiency-item">
-                    <div class="proficiency-header">
-                        <span>JavaScript</span>
-                        <span class="proficiency-level">90%</span>
-                    </div>
-                    <div class="proficiency-bar">
-                        <div class="proficiency-fill" style="width: 90%"></div>
-                    </div>
-                </div>
-                <div class="proficiency-item">
-                    <div class="proficiency-header">
-                        <span>React</span>
-                        <span class="proficiency-level">85%</span>
-                    </div>
-                    <div class="proficiency-bar">
-                        <div class="proficiency-fill" style="width: 85%"></div>
-                    </div>
-                </div>
-                <div class="proficiency-item">
-                    <div class="proficiency-header">
-                        <span>CSS/Diseño</span>
-                        <span class="proficiency-level">88%</span>
-                    </div>
-                    <div class="proficiency-bar">
-                        <div class="proficiency-fill" style="width: 88%"></div>
-                    </div>
-                </div>
-                <div class="proficiency-item">
-                    <div class="proficiency-header">
-                        <span>Blender 3D</span>
-                        <span class="proficiency-level">75%</span>
-                    </div>
-                    <div class="proficiency-bar">
-                        <div class="proficiency-fill" style="width: 75%"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- CTA -->
         <section class="cta-section">
             <div class="cta-content glass-card">
@@ -272,6 +229,38 @@
             }
         });
     </script>
+
+    <!-- Reproductor de Spotify Minimalista -->
+    <div class="spotify-player-container">
+        <div id="spotify-login">
+            <h3>🎵 Spotify Player</h3>
+            <p>Conecta tu cuenta para reproducir música</p>
+            <button class="spotify-login-btn" onclick="window.spotifyPlayer?.loginWithSpotify()">Conectar</button>
+        </div>
+        
+        <div id="spotify-player">
+            <div class="spotify-track-info">
+                <img id="track-image" src="" alt="Album" style="display: none;">
+                <div class="spotify-track-text">
+                    <div id="track-name">Sin canción</div>
+                    <div id="track-artist">-</div>
+                </div>
+            </div>
+            
+            <select id="playlist-select"></select>
+            
+            <div class="spotify-controls">
+                <button class="spotify-btn" id="prev-btn" title="Anterior">⏮</button>
+                <button class="spotify-btn" id="play-btn" title="Reproducir/Pausar">▶</button>
+                <button class="spotify-btn" id="next-btn" title="Siguiente">⏭</button>
+            </div>
+            
+            <button class="spotify-logout-btn" id="spotify-logout">Desconectar</button>
+        </div>
+    </div>
+
+    <!-- Script del Reproductor Spotify -->
+    <script src="./spotify-player.js"></script>
 </body>
 
 </html>

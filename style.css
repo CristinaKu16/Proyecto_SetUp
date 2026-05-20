@@ -1494,3 +1494,219 @@ nav ul.nav-links a.active {
 nav ul.nav-links a.active::after {
     width: 100%;
 }
+
+/* ==========================================
+   REPRODUCTOR DE SPOTIFY MINIMALISTA
+   ========================================== */
+
+.spotify-player-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    animation: slideInRight 0.5s ease-out;
+}
+
+/* Sección de Login */
+#spotify-login {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    width: 320px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+}
+
+#spotify-login h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#spotify-login p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.spotify-login-btn {
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 0.9rem;
+}
+
+.spotify-login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(244, 114, 182, 0.3);
+}
+
+/* Reproductor Minimalista */
+#spotify-player {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.25rem;
+    width: 320px;
+    box-shadow: var(--card-shadow);
+    display: none;
+}
+
+/* Información de la Canción Actual */
+.spotify-track-info {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    align-items: flex-start;
+}
+
+#track-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    background: var(--bg-secondary);
+}
+
+.spotify-track-text {
+    flex: 1;
+    min-width: 0;
+}
+
+#track-name {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#track-artist {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Selector de Playlists */
+#playlist-select {
+    width: 100%;
+    padding: 0.65rem;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: border-color 0.2s;
+}
+
+#playlist-select:hover,
+#playlist-select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Controles de Reproducción */
+.spotify-controls {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.spotify-btn {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.9rem;
+}
+
+.spotify-btn:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.spotify-btn:active {
+    transform: scale(0.95);
+}
+
+#play-btn {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    width: 48px;
+    height: 48px;
+    font-weight: 600;
+}
+
+#play-btn:hover {
+    background: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* Botón de Logout */
+.spotify-logout-btn {
+    width: 100%;
+    padding: 0.6rem;
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Outfit', sans-serif;
+}
+
+.spotify-logout-btn:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* Responsive para Mobile */
+@media (max-width: 640px) {
+    .spotify-player-container {
+        bottom: 10px;
+        right: 10px;
+    }
+    
+    #spotify-login,
+    #spotify-player {
+        width: 280px;
+    }
+    
+    .spotify-track-info {
+        margin-bottom: 1rem;
+    }
+    
+    #track-image {
+        width: 50px;
+        height: 50px;
+    }
+}

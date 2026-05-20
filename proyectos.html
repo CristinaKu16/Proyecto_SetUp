@@ -202,6 +202,38 @@
             }
         });
     </script>
+
+    <!-- Reproductor de Spotify Minimalista -->
+    <div class="spotify-player-container">
+        <div id="spotify-login">
+            <h3>🎵 Spotify Player</h3>
+            <p>Conecta tu cuenta para reproducir música</p>
+            <button class="spotify-login-btn" onclick="window.spotifyPlayer?.loginWithSpotify()">Conectar</button>
+        </div>
+        
+        <div id="spotify-player">
+            <div class="spotify-track-info">
+                <img id="track-image" src="" alt="Album" style="display: none;">
+                <div class="spotify-track-text">
+                    <div id="track-name">Sin canción</div>
+                    <div id="track-artist">-</div>
+                </div>
+            </div>
+            
+            <select id="playlist-select"></select>
+            
+            <div class="spotify-controls">
+                <button class="spotify-btn" id="prev-btn" title="Anterior">⏮</button>
+                <button class="spotify-btn" id="play-btn" title="Reproducir/Pausar">▶</button>
+                <button class="spotify-btn" id="next-btn" title="Siguiente">⏭</button>
+            </div>
+            
+            <button class="spotify-logout-btn" id="spotify-logout">Desconectar</button>
+        </div>
+    </div>
+
+    <!-- Script del Reproductor Spotify -->
+    <script src="./spotify-player.js"></script>
 </body>
 
 </html>
