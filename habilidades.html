@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habilidades | Dev3D</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Efecto Galaxia -->
+    <div id="galaxy-stars"></div>
+    
+    <!-- Efectos Extra Increíbles -->
+    <div class="shooting-stars">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="magical-dust"></div>
+    <div id="cursor-glow"></div>
+
+    <!-- Navbar -->
+    <header class="glass-header">
+        <div class="logo">Dev<span>3D</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./sobre-mi.html">Sobre mí</a></li>
+                <li><a href="./habilidades.html" class="active">Habilidades</a></li>
+                <li><a href="./proyectos.html">Proyectos</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button id="spotify-toggle" class="btn-spotify" title="Abrir Playlist de Spotify">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M8 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm4-2a1 1 0 1 1 2 0v4a1 1 0 1 1-2 0v-4zm4 1a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" fill="currentColor"/>
+                </svg>
+            </button>
+            <button id="theme-toggle" class="btn-theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    style="display: none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Spotify Modal Widget -->
+    <div id="spotify-modal" class="spotify-modal">
+        <div class="spotify-modal-content">
+            <button class="spotify-close" id="spotify-close">&times;</button>
+            <iframe style="border-radius: 12px;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <!-- Página Habilidades -->
+    <section class="page-section">
+        <h1 class="section-title"><span class="gradient-text">Mis Habilidades</span></h1>
+        <p class="section-description">Estas son las habilidades y tecnologías en las que me he especializado durante mi formación como Ingeniera en Sistemas Computacionales.</p>
+
+        <!-- Grilla de Habilidades -->
+        <section class="skills-section">
+            <div class="skills-grid">
+                <div class="skill-card glass-card">
+                    <div class="skill-icon">💻</div>
+                    <h3 class="gradient-text">Frontend</h3>
+                    <p>HTML5, CSS3, JavaScript, React, TailwindCSS.</p>
+                    <div class="skill-details">
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">TailwindCSS</span>
+                    </div>
+                </div>
+                <div class="skill-card glass-card">
+                    <div class="skill-icon">🎮</div>
+                    <h3 class="gradient-text">Gráficos 3D</h3>
+                    <p>Three.js, WebGL, Blender, Rive Animations.</p>
+                    <div class="skill-details">
+                        <span class="skill-tag">Three.js</span>
+                        <span class="skill-tag">WebGL</span>
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">Rive</span>
+                    </div>
+                </div>
+                <div class="skill-card glass-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3 class="gradient-text">Ingeniería</h3>
+                    <p>Estructuras de datos, Algoritmos, Patrones de diseño.</p>
+                    <div class="skill-details">
+                        <span class="skill-tag">Estructuras</span>
+                        <span class="skill-tag">Algoritmos</span>
+                        <span class="skill-tag">Patrones</span>
+                    </div>
+                </div>
+                <div class="skill-card glass-card">
+                    <div class="skill-icon">🔒</div>
+                    <h3 class="gradient-text">Ciberseguridad</h3>
+                    <p>Fundamentos de seguridad, análisis de vulnerabilidades.</p>
+                    <div class="skill-details">
+                        <span class="skill-tag">Seguridad</span>
+                        <span class="skill-tag">Vulnerabilidades</span>
+                        <span class="skill-tag">Protección</span>
+                    </div>
+                </div>
+                <div class="skill-card glass-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3 class="gradient-text">Diseño UI/UX</h3>
+                    <p>Figma, Prototipos, Experiencia de usuario.</p>
+                    <div class="skill-details">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Prototipado</span>
+                        <span class="skill-tag">UX Design</span>
+                    </div>
+                </div>
+                <div class="skill-card glass-card">
+                    <div class="skill-icon">📚</div>
+                    <h3 class="gradient-text">Otras Habilidades</h3>
+                    <p>Git, Responsive Design, Optimización Web.</p>
+                    <div class="skill-details">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Responsive</span>
+                        <span class="skill-tag">Optimización</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Barra de Progreso de Habilidades (Opcional) -->
+        <section class="proficiency-section">
+            <h2 class="subsection-title">Nivel de Proficiencia</h2>
+            <div class="proficiency-grid">
+                <div class="proficiency-item">
+                    <div class="proficiency-header">
+                        <span>JavaScript</span>
+                        <span class="proficiency-level">90%</span>
+                    </div>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="proficiency-item">
+                    <div class="proficiency-header">
+                        <span>React</span>
+                        <span class="proficiency-level">85%</span>
+                    </div>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="proficiency-item">
+                    <div class="proficiency-header">
+                        <span>CSS/Diseño</span>
+                        <span class="proficiency-level">88%</span>
+                    </div>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill" style="width: 88%"></div>
+                    </div>
+                </div>
+                <div class="proficiency-item">
+                    <div class="proficiency-header">
+                        <span>Blender 3D</span>
+                        <span class="proficiency-level">75%</span>
+                    </div>
+                    <div class="proficiency-bar">
+                        <div class="proficiency-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="cta-content glass-card">
+                <h2>¿Quieres ver mi portafolio?</h2>
+                <p>Explora los proyectos en los que he estado trabajando y descubre cómo utilizo estas habilidades.</p>
+                <a href="./proyectos.html" class="btn-primary">Ver Proyectos</a>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Portafolio de Ingeniería. Creado por Cristi Ku.</p>
+    </footer>
+
+    <!-- Script de Temas y Efectos -->
+    <script>
+        // Cursor Glow
+        const cursorGlow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = e.clientX + 'px';
+            cursorGlow.style.top = e.clientY + 'px';
+        });
+
+        // Generate Magical Dust
+        const dustContainer = document.querySelector('.magical-dust');
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('dust-particle');
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = 5 + Math.random() * 5 + 's';
+            dustContainer.appendChild(particle);
+        }
+
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            
+            if (document.body.classList.contains('light-mode')) {
+                sunIcon.style.display = 'none';
+                moonIcon.style.display = 'block';
+                localStorage.setItem('theme', 'light');
+            } else {
+                sunIcon.style.display = 'block';
+                moonIcon.style.display = 'none';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Cargar tema guardado
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            sunIcon.style.display = 'none';
+            moonIcon.style.display = 'block';
+        }
+
+        // Spotify Widget Toggle
+        const spotifyToggle = document.getElementById('spotify-toggle');
+        const spotifyModal = document.getElementById('spotify-modal');
+        const spotifyClose = document.getElementById('spotify-close');
+
+        spotifyToggle.addEventListener('click', () => {
+            spotifyModal.classList.toggle('active');
+        });
+
+        spotifyClose.addEventListener('click', () => {
+            spotifyModal.classList.remove('active');
+        });
+
+        spotifyModal.addEventListener('click', (e) => {
+            if (e.target === spotifyModal) {
+                spotifyModal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
