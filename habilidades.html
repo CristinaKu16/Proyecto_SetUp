@@ -39,16 +39,7 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <button id="spotify-player-btn" class="spotify-btn-player" title="Reproductor de Spotify">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <!-- Círculo externo -->
-                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                    <!-- Barras onduladas de Spotify -->
-                    <path d="M7 11c0 0 1 1 5 1s5-1 5-1" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                    <path d="M7 14c0 0 1.5 1.5 5 1.5s5-1.5 5-1.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                    <path d="M8 8c0 0 1 0.5 4 0.5s4-0.5 4-0.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-                </svg>
-            </button>
+
             <button id="theme-toggle" class="btn-theme">
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
                     fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -210,65 +201,6 @@
         }
 
 
-    </script>
-
-    <!-- Spotify Player Modal -->
-    <div id="spotify-modal" class="spotify-player-modal">
-        <div class="spotify-modal-content">
-            <button id="spotify-close-btn" class="spotify-close-btn">&times;</button>
-            <h2>Mi Playlist</h2>
-            <iframe style="border-radius: 12px; margin-top: 1rem;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <script>
-        // Spotify Player Modal
-        const spotifyBtn = document.getElementById('spotify-player-btn');
-        const spotifyModal = document.getElementById('spotify-modal');
-        const spotifyCloseBtn = document.getElementById('spotify-close-btn');
-
-        spotifyBtn.addEventListener('click', () => {
-            spotifyModal.classList.add('active');
-        });
-
-        spotifyCloseBtn.addEventListener('click', () => {
-            spotifyModal.classList.remove('active');
-        });
-
-        spotifyModal.addEventListener('click', (e) => {
-            if (e.target === spotifyModal) {
-                spotifyModal.classList.remove('active');
-            }
-        });
-
-        // Cerrar con tecla ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && spotifyModal.classList.contains('active')) {
-                spotifyModal.classList.remove('active');
-            }
-        });
-    </script>
-
-    <!-- Reproductor Flotante Spotify -->
-    <div id="floating-player" class="floating-spotify-player">
-        <button id="toggle-player-btn" class="toggle-player-btn" title="Minimizar/Expandir Reproductor">
-            ▼
-        </button>
-        <div id="player-content" class="player-content">
-            <iframe style="border-radius: 12px;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </div>
-
-    <script>
-        // Toggle Floating Player
-        const toggleBtn = document.getElementById('toggle-player-btn');
-        const playerContent = document.getElementById('player-content');
-        const floatingPlayer = document.getElementById('floating-player');
-
-        toggleBtn.addEventListener('click', () => {
-            playerContent.classList.toggle('hidden');
-            toggleBtn.textContent = playerContent.classList.contains('hidden') ? '▲' : '▼';
-        });
     </script>
 </body>
 
