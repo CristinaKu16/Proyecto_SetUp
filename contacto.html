@@ -1,47 +1,116 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev3D | Conectemos</title>
-
+    <title>Contacto - Dev3D</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-
     <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
 </head>
+<body>
+    <!-- Galaxy effects -->
+    <div id="galaxy-stars"></div>
+    <div class="shooting-stars"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="magical-dust"></div>
+    <div id="cursor-glow"></div>
 
+    <!-- Navbar -->
+    <header class="glass-header">
+        <div class="logo">Dev<span>3D</span></div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="./index.html">Inicio</a></li>
+                <li><a href="./sobre-mi.html">Sobre mí</a></li>
+                <li><a href="./habilidades.html">Habilidades</a></li>
+                <li><a href="./proyectos.html">Proyectos</a></li>
+                <li><a href="./contacto.html" class="active">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="header-buttons">
+            <button id="theme-toggle" class="btn-theme">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="1" y1="12" x2="2.5" y2="12"></line>
+                    <line x1="21.5" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.36" y2="18.64"></line>
+                    <line x1="18.64" y1="5.36" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
 
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" rows="6" placeholder="Cuéntame sobre tu proyecto o idea..." required></textarea>
-                </div>
+    <!-- Contact Section -->
+    <section class="contact-section glass-card">
+        <h2 class="gradient-text">Contáctame</h2>
+        <form id="contact-form">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" placeholder="Tu nombre completo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" placeholder="Asunto del mensaje" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" rows="6" placeholder="Cuéntame sobre tu proyecto o idea..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Enviar Mensaje</button>
+            <p class="form-note">Nota: Este es un formulario de demostración. Los mensajes no se enviarán automáticamente. Para contactarme, usa las redes sociales o envía un correo directamente.</p>
+        </form>
 
-                <button type="submit" class="btn-primary">Enviar Mensaje</button>
-                <p class="form-note">Nota: Este es un formulario de demostración. Los mensajes no se enviarán automáticamente. Para contactarme, usa las redes sociales o envía un correo directamente.</p>
-            </form>
+        <!-- Redes Sociales -->
+        <div class="social-links">
+            <h2 class="gradient-text" style="text-align:center; margin:2rem 0 1rem; font-weight:600; font-size:1.2rem;">O encuéntrame en mis redes</h2>
+            <div class="social-icons-container">
+                <a href="https://github.com/CristinaKu16" target="_blank" class="social-icon github" title="GitHub">
+    <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+    </span>
+    <span class="social-text">GitHub</span>
+</a>
+<a href="https://www.instagram.com/crisnx._/" target="_blank" class="social-icon instagram" title="Instagram">
+    <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg>
+    </span>
+    <span class="social-text">Instagram</span>
+</a>
+<a href="https://www.threads.com/@crisnx._" target="_blank" class="social-icon threads" title="Threads">
+    <span class="social-text">Threads</span>
+</a>
+<a href="https://www.facebook.com/share/18oapAzZv5/" target="_blank" class="social-icon facebook" title="Facebook">
+    <span class="icon-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    </span>
+    <span class="social-text">Facebook</span>
+</a>
+                    
+                    </span>
+                    <span class="social-text">GitHub</span>
+                </a>
 
-            <!-- Redes Sociales -->
-            <div class="social-links">
-                <h2 class="gradient-text" style="text-align: center; margin: 2rem 0 1rem; font-weight: 600; font-size: 1.2rem;">O encuéntrame en mis redes</h2>
-                <div class="social-icons-container">
-                    <a href="https://github.com/CristinaKu16" target="_blank" class="social-icon github" title="GitHub">
-                        <span class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                        </span>
-                        <span class="social-text">GitHub</span>
-                    </a>
-                    <a href="https://www.instagram.com/crisnx._/" target="_blank" class="social-icon instagram" title="Instagram">
-                        <span class="icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                        </span>
-                        <span class="social-text">Instagram</span>
-                    </a>
-                    <a href="https://www.facebook.com/share/1BVay3SPo3/" target="_blank" class="social-icon facebook" title="Facebook">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg>
+                    </span>
+                    <span class="social-text">Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/share/1BVay3SPo3/" target="_blank" class="social-icon facebook" title="Facebook">
+                    <span class="icon-wrapper">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </span>
+                    <span class="social-text">Facebook</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -49,7 +118,7 @@
         <p>&copy; 2026 - Portafolio de Ingeniería. Creado por Cristi Ku.</p>
     </footer>
 
-    <!-- Script de Temas y Efectos -->
+    <!-- Scripts -->
     <script>
         // Cursor Glow
         const cursorGlow = document.getElementById('cursor-glow');
@@ -57,8 +126,7 @@
             cursorGlow.style.left = e.clientX + 'px';
             cursorGlow.style.top = e.clientY + 'px';
         });
-
-        // Generate Magical Dust
+        // Magical Dust
         const dustContainer = document.querySelector('.magical-dust');
         for (let i = 0; i < 40; i++) {
             const particle = document.createElement('div');
@@ -68,15 +136,12 @@
             particle.style.animationDuration = 5 + Math.random() * 5 + 's';
             dustContainer.appendChild(particle);
         }
-
         // Theme Toggle
         const themeToggleBtn = document.getElementById('theme-toggle');
         const sunIcon = document.querySelector('.sun-icon');
         const moonIcon = document.querySelector('.moon-icon');
-
         themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
-            
             if (document.body.classList.contains('light-mode')) {
                 sunIcon.style.display = 'none';
                 moonIcon.style.display = 'block';
@@ -87,25 +152,29 @@
                 localStorage.setItem('theme', 'dark');
             }
         });
-
-        // Cargar tema guardado
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
             document.body.classList.add('light-mode');
             sunIcon.style.display = 'none';
             moonIcon.style.display = 'block';
         }
-
-        // Formulario
+        // Contact Form
         const contactForm = document.getElementById('contact-form');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             alert('¡Gracias por tu mensaje! Aunque este es un formulario de demostración, tu mensaje ha sido procesado. Pronto me pondré en contacto contigo.');
             contactForm.reset();
         });
-
-
+        // Active navigation link
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(currentPage)) {
+                    link.classList.add('active');
+                }
+            });
+        });
     </script>
 </body>
-
 </html>
