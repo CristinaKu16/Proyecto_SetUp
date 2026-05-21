@@ -41,7 +41,7 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 container.appendChild(renderer.domElement);
 
 // Controles de Órbita (Zoom, Rotación)
-const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true; // Movimiento suave
 controls.dampingFactor = 0.05;
 controls.minDistance = 2; // Límite de zoom in
@@ -68,21 +68,19 @@ Cuando tengas tu archivo .glb exportado de Blender, guárdalo en la misma carpet
 y descomenta el siguiente bloque de código cambiando 'tu_modelo.glb' por el nombre real.
 */
 
-/*
+// Load actual model
 loader.load(
-    './tu_modelo.glb', // RUTA DE TU ARCHIVO
+    './Assets/SetUp%20Gamer.glb',
     (gltf) => {
         const model = gltf.scene;
-        // Ajustar posición o escala si es necesario
-        // model.scale.set(1, 1, 1);
-        // model.position.set(0, 0, 0);
-        
         scene.add(model);
-        loadingOverlay.style.display = 'none'; // Quitar texto de carga
+        // Adjust model to fit view
+        model.scale.set(1.5, 1.5, 1.5);
+        model.position.set(0, 0, 0);
+        loadingOverlay.style.display = 'none';
     },
     (xhr) => {
-        // Muestra el progreso en la consola
-        console.log((xhr.loaded / xhr.total * 100) + '% cargado');
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
     },
     (error) => {
         console.error('Error loading 3D model:', error);
@@ -90,9 +88,6 @@ loader.load(
     }
 );
 
-// Remove placeholder geometry function
-// function createPlaceholder() { /* ... */ }
-// createPlaceholder(); // Commented out
 
 
 // ==========================================
