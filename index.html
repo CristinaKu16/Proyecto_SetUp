@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dev3D | Portafolio</title>
+    <title>Dev3D | Universo Digital</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,10 +39,9 @@
             </ul>
         </nav>
         <div class="header-buttons">
-            <button id="spotify-toggle" class="btn-spotify" title="Abrir Playlist de Spotify">
+            <button id="spotify-player-btn" class="spotify-btn-player" title="Reproductor de Spotify">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
-                    <path d="M8 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0zm4-2a1 1 0 1 1 2 0v4a1 1 0 1 1-2 0v-4zm4 1a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" fill="currentColor"/>
+                    <path d="M9 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0-8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0-8C7.896 2 7 2.896 7 4s.896 2 2 2 2-.896 2-2-.896-2-2-2zm12 7h-8v-2h8v2zm0 8h-8v-2h8v2zm0-16h-8v2h8V2z"/>
                 </svg>
             </button>
             <button id="theme-toggle" class="btn-theme">
@@ -65,14 +64,6 @@
             </svg>
         </button>
     </header>
-
-    <!-- Spotify Modal Widget -->
-    <div id="spotify-modal" class="spotify-modal">
-        <div class="spotify-modal-content">
-            <button class="spotify-close" id="spotify-close">&times;</button>
-            <iframe style="border-radius: 12px;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </div>
 
     <!-- Hero / Inicio -->
     <section class="hero-section">
@@ -206,16 +197,29 @@
             moonIcon.style.display = 'block';
         }
 
-        // Spotify Widget Toggle
-        const spotifyToggle = document.getElementById('spotify-toggle');
-        const spotifyModal = document.getElementById('spotify-modal');
-        const spotifyClose = document.getElementById('spotify-close');
 
-        spotifyToggle.addEventListener('click', () => {
-            spotifyModal.classList.toggle('active');
+    </script>
+
+    <!-- Spotify Player Modal -->
+    <div id="spotify-modal" class="spotify-player-modal">
+        <div class="spotify-modal-content">
+            <button id="spotify-close-btn" class="spotify-close-btn">&times;</button>
+            <h2>Mi Playlist</h2>
+            <iframe style="border-radius: 12px; margin-top: 1rem;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Spotify Player Modal
+        const spotifyBtn = document.getElementById('spotify-player-btn');
+        const spotifyModal = document.getElementById('spotify-modal');
+        const spotifyCloseBtn = document.getElementById('spotify-close-btn');
+
+        spotifyBtn.addEventListener('click', () => {
+            spotifyModal.classList.add('active');
         });
 
-        spotifyClose.addEventListener('click', () => {
+        spotifyCloseBtn.addEventListener('click', () => {
             spotifyModal.classList.remove('active');
         });
 
@@ -224,39 +228,14 @@
                 spotifyModal.classList.remove('active');
             }
         });
+
+        // Cerrar con tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && spotifyModal.classList.contains('active')) {
+                spotifyModal.classList.remove('active');
+            }
+        });
     </script>
-
-    <!-- Reproductor de Spotify Minimalista -->
-    <div class="spotify-player-container">
-        <div id="spotify-login">
-            <h3>🎵 Spotify Player</h3>
-            <p>Conecta tu cuenta para reproducir música</p>
-            <button class="spotify-login-btn" onclick="window.spotifyPlayer?.loginWithSpotify()">Conectar</button>
-        </div>
-        
-        <div id="spotify-player">
-            <div class="spotify-track-info">
-                <img id="track-image" src="" alt="Album" style="display: none;">
-                <div class="spotify-track-text">
-                    <div id="track-name">Sin canción</div>
-                    <div id="track-artist">-</div>
-                </div>
-            </div>
-            
-            <select id="playlist-select"></select>
-            
-            <div class="spotify-controls">
-                <button class="spotify-btn" id="prev-btn" title="Anterior">⏮</button>
-                <button class="spotify-btn" id="play-btn" title="Reproducir/Pausar">▶</button>
-                <button class="spotify-btn" id="next-btn" title="Siguiente">⏭</button>
-            </div>
-            
-            <button class="spotify-logout-btn" id="spotify-logout">Desconectar</button>
-        </div>
-    </div>
-
-    <!-- Script del Reproductor Spotify -->
-    <script src="./spotify-player.js"></script>
 </body>
 
 </html>
