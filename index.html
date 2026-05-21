@@ -38,6 +38,9 @@
                 <li><a href="./contacto.html">Contacto</a></li>
             </ul>
         </nav>
+        <button id="menu-toggle" class="btn-theme" aria-label="Toggle menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
         <div class="header-buttons">
 
             <button id="theme-toggle" class="btn-theme">
@@ -161,10 +164,17 @@
             });
         });
 
-        // Theme Toggle
-        const themeToggleBtn = document.getElementById('theme-toggle');
+        // Hamburger menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            menuToggle.classList.toggle('active');
+        });
+
         const sunIcon = document.querySelector('.sun-icon');
         const moonIcon = document.querySelector('.moon-icon');
+        const themeToggleBtn = document.getElementById('theme-toggle');
 
         themeToggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('light-mode');
@@ -179,6 +189,40 @@
                 localStorage.setItem('theme', 'dark');
             }
         });
+
+        /* Responsive Navbar */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: var(--glass-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                width: 200px;
+                padding: 1rem;
+                border: 1px solid var(--glass-border);
+                border-radius: 8px;
+                transform: translateX(100%);
+                transition: transform var(--transition-speed) ease;
+                z-index: 1001;
+            }
+            .nav-links.open {
+                transform: translateX(0);
+            }
+            .menu-toggle {
+                display: block;
+                background: transparent;
+                border: none;
+                color: var(--text-primary);
+                cursor: pointer;
+                margin-left: 1rem;
+            }
+            .header-buttons {
+                display: flex;
+                align-items: center;
+            }
+        }
 
         // Cargar tema guardado
         const savedTheme = localStorage.getItem('theme');

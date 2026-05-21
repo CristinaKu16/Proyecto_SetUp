@@ -1,6 +1,4 @@
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// Imports removed; using global THREE from CDN scripts
 
 // ==========================================
 // 1. LÓGICA DE TEMA (CLARO / OSCURO)
@@ -62,7 +60,7 @@ scene.add(directionalLight);
 // ==========================================
 // 3. CARGA DEL MODELO GLB/GLTF
 // ==========================================
-const loader = new GLTFLoader();
+const loader = new THREE.GLTFLoader();
 
 /* 
 INSTRUCCIONES: 
@@ -87,55 +85,14 @@ loader.load(
         console.log((xhr.loaded / xhr.total * 100) + '% cargado');
     },
     (error) => {
-        console.error('Error al cargar el modelo 3D:', error);
-        loadingOverlay.innerText = 'Error al cargar modelo.';
+        console.error('Error loading 3D model:', error);
+        loadingOverlay.innerText = 'Error loading model.';
     }
 );
-*/
 
-// --> PLACEHOLDER TEMPORAL (Borra esto cuando cargues tu modelo real)
-// Crea un setup de escritorio básico usando formas primitivas de Three.js
-function createPlaceholder() {
-    const group = new THREE.Group();
-
-    // Escritorio
-    const deskGeo = new THREE.BoxGeometry(3, 0.1, 1.5);
-    const deskMat = new THREE.MeshStandardMaterial({ color: 0x3a3a4a, roughness: 0.8 });
-    const desk = new THREE.Mesh(deskGeo, deskMat);
-    desk.position.y = 0.05;
-    group.add(desk);
-
-    // Monitor
-    const monitorGeo = new THREE.BoxGeometry(1.2, 0.7, 0.05);
-    const monitorMat = new THREE.MeshStandardMaterial({ color: 0x111115 });
-    const monitor = new THREE.Mesh(monitorGeo, monitorMat);
-    monitor.position.set(0, 0.6, -0.2);
-    group.add(monitor);
-    
-    // Pantalla (Luz emisiva para darle el toque hacker/ingeniero)
-    const screenGeo = new THREE.PlaneGeometry(1.1, 0.6);
-    const screenMat = new THREE.MeshStandardMaterial({ 
-        color: 0x2cb67d, 
-        emissive: 0x2cb67d, 
-        emissiveIntensity: 0.2 
-    });
-    const screen = new THREE.Mesh(screenGeo, screenMat);
-    screen.position.set(0, 0.6, -0.17);
-    group.add(screen);
-
-    // Soporte
-    const standGeo = new THREE.CylinderGeometry(0.05, 0.1, 0.4);
-    const standMat = new THREE.MeshStandardMaterial({ color: 0x555566 });
-    const stand = new THREE.Mesh(standGeo, standMat);
-    stand.position.set(0, 0.3, -0.3);
-    group.add(stand);
-
-    scene.add(group);
-    
-    // Ocultar overlay porque ya cargamos el placeholder
-    if(loadingOverlay) loadingOverlay.style.display = 'none';
-}
-createPlaceholder(); // <- Elimina esta línea cuando uses el loader.load de arriba
+// Remove placeholder geometry function
+// function createPlaceholder() { /* ... */ }
+// createPlaceholder(); // Commented out
 
 
 // ==========================================
