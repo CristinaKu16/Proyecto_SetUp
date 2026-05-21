@@ -94,6 +94,11 @@
             <img src="./Assets/IMG-20250514-WA0153.jpg" alt="Cristina Canul Ku" class="profile-image">
         </div>
     </section>
+    <!-- 3D Model Section -->
+    <section id="model-section" class="model-section glass-card">
+        <h2 class="section-title"><span class="gradient-text">INTERACTÚA CON EL MODELO</span></h2>
+        <model-viewer src="./Assets/SetUp Gamer.glb" alt="Setup Gamer Completo" camera-controls ar auto-rotate style="width:100%; height:450px;"></model-viewer>
+    </section>
 
     <!-- Sección de Bienvenida con Features -->
     <section class="features-section">
@@ -141,6 +146,7 @@
     </script>
 
     <!-- Script Principal -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <script type="module" src="./script.js"></script>
 
     <!-- Interactive Effects Script -->
@@ -235,14 +241,7 @@
     </script>
 
     <!-- Reproductor Flotante Spotify -->
-    <div id="floating-player" class="floating-spotify-player">
-        <button id="toggle-player-btn" class="toggle-player-btn" title="Minimizar/Expandir Reproductor">
-            ▼
-        </button>
-        <div id="player-content" class="player-content">
-            <iframe style="border-radius: 12px;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-    </div>
+    
 
     <script>
         // Toggle Floating Player
