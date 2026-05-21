@@ -119,19 +119,13 @@
         <p>&copy; 2026 - Portafolio de Ingeniería. Creado por Cristi Ku.</p>
     </footer>
 
-    <!-- Import Map para Three.js -->
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-            }
-        }
-    </script>
+    <!-- Three.js y extensiones desde CDN -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="https://unpkg.com/three@0.160.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://unpkg.com/three@0.160.0/examples/js/loaders/GLTFLoader.js"></script>
 
     <!-- Script Principal -->
-    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <script type="module" src="./script.js"></script>
+    <script src="./script.js"></script>
 
     <!-- Interactive Effects Script -->
     <script>
@@ -190,40 +184,6 @@
             }
         });
 
-        /* Responsive Navbar */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                top: 70px;
-                right: 0;
-                background: var(--glass-bg);
-                flex-direction: column;
-                align-items: flex-start;
-                width: 200px;
-                padding: 1rem;
-                border: 1px solid var(--glass-border);
-                border-radius: 8px;
-                transform: translateX(100%);
-                transition: transform var(--transition-speed) ease;
-                z-index: 1001;
-            }
-            .nav-links.open {
-                transform: translateX(0);
-            }
-            .menu-toggle {
-                display: block;
-                background: transparent;
-                border: none;
-                color: var(--text-primary);
-                cursor: pointer;
-                margin-left: 1rem;
-            }
-            .header-buttons {
-                display: flex;
-                align-items: center;
-            }
-        }
-
         // Cargar tema guardado
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme === 'light') {
@@ -259,7 +219,6 @@
     </script>
 
     <!-- Reproductor Flotante Spotify -->
-    
 
     <script>
         // Toggle Floating Player

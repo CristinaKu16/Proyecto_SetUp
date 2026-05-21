@@ -1510,3 +1510,66 @@ nav ul.nav-links a.active::after {
     }
 }
 
+/* ==========================================
+   ESTILOS DEL CONTENEDOR 3D (Three.js)
+   ========================================== */
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(135deg, #0a0a0f 0%, #13131a 50%, #1a0a2e 100%);
+}
+
+body.light-mode #canvas-container {
+    background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #fce7f3 100%);
+}
+
+/* Loading Overlay */
+#loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 15, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-size: 1.2rem;
+    gap: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+body.light-mode #loading-overlay {
+    background: rgba(253, 242, 248, 0.9);
+    color: #1a1a24;
+}
+
+/* Spinner animado */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(244, 114, 182, 0.2);
+    border-top-color: #f472b6;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#loading-overlay p {
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #f472b6;
+}
+

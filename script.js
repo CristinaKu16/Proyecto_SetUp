@@ -70,7 +70,7 @@ y descomenta el siguiente bloque de código cambiando 'tu_modelo.glb' por el nom
 
 // Load actual model
 loader.load(
-    './Assets/SetUp%20Gamer.glb',
+    './Assets/SetUp Gamer.glb',
     (gltf) => {
         const model = gltf.scene;
         scene.add(model);
@@ -78,13 +78,17 @@ loader.load(
         model.scale.set(1.5, 1.5, 1.5);
         model.position.set(0, 0, 0);
         loadingOverlay.style.display = 'none';
+        console.log('✓ Modelo cargado exitosamente');
     },
     (xhr) => {
-        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+        const percent = (xhr.loaded / xhr.total * 100);
+        console.log(percent + '% loaded');
+        loadingOverlay.innerText = `Cargando: ${Math.round(percent)}%`;
     },
     (error) => {
         console.error('Error loading 3D model:', error);
-        loadingOverlay.innerText = 'Error loading model.';
+        loadingOverlay.innerHTML = `<p style="color: #ff4444;">❌ Error al cargar el modelo</p><p style="font-size: 0.9em; color: #888;">${error.message}</p>`;
+        console.error('Detalles del error:', error);
     }
 );
 
