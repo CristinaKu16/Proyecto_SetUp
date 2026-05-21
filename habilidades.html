@@ -41,25 +41,32 @@
         <div class="header-buttons">
             <button id="spotify-player-btn" class="spotify-btn-player" title="Reproductor de Spotify">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M9 18c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0-8c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zm0-8C7.896 2 7 2.896 7 4s.896 2 2 2 2-.896 2-2-.896-2-2-2zm12 7h-8v-2h8v2zm0 8h-8v-2h8v2zm0-16h-8v2h8V2z"/>
+                    <!-- Círculo externo -->
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <!-- Barras onduladas de Spotify -->
+                    <path d="M7 11c0 0 1 1 5 1s5-1 5-1" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <path d="M7 14c0 0 1.5 1.5 5 1.5s5-1.5 5-1.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <path d="M8 8c0 0 1 0.5 4 0.5s4-0.5 4-0.5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
                 </svg>
             </button>
             <button id="theme-toggle" class="btn-theme">
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Sol minimalista -->
                     <circle cx="12" cy="12" r="5"></circle>
-                    <line x1="12" y1="1" x2="12" y2="3"></line>
-                    <line x1="12" y1="21" x2="12" y2="23"></line>
-                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                    <line x1="1" y1="12" x2="3" y2="12"></line>
-                    <line x1="21" y1="12" x2="23" y2="12"></line>
-                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    <line x1="12" y1="1" x2="12" y2="2.5"></line>
+                    <line x1="12" y1="21.5" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.36" y2="5.36"></line>
+                    <line x1="18.64" y1="18.64" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="2.5" y2="12"></line>
+                    <line x1="21.5" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.36" y2="18.64"></line>
+                    <line x1="18.64" y1="5.36" x2="19.78" y2="4.22"></line>
                 </svg>
                 <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                     style="display: none;">
+                    <!-- Luna delgada minimalista -->
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                 </svg>
             </button>
@@ -239,6 +246,28 @@
             if (e.key === 'Escape' && spotifyModal.classList.contains('active')) {
                 spotifyModal.classList.remove('active');
             }
+        });
+    </script>
+
+    <!-- Reproductor Flotante Spotify -->
+    <div id="floating-player" class="floating-spotify-player">
+        <button id="toggle-player-btn" class="toggle-player-btn" title="Minimizar/Expandir Reproductor">
+            ▼
+        </button>
+        <div id="player-content" class="player-content">
+            <iframe style="border-radius: 12px;" src="https://open.spotify.com/embed/playlist/27rdnpNj0qfIB7ewwz4Sfk?utm_source=generator" width="100%" height="232" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Floating Player
+        const toggleBtn = document.getElementById('toggle-player-btn');
+        const playerContent = document.getElementById('player-content');
+        const floatingPlayer = document.getElementById('floating-player');
+
+        toggleBtn.addEventListener('click', () => {
+            playerContent.classList.toggle('hidden');
+            toggleBtn.textContent = playerContent.classList.contains('hidden') ? '▲' : '▼';
         });
     </script>
 </body>
