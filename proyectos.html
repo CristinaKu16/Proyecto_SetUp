@@ -13,37 +13,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./scene3d.css">
 
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@r128/examples/js/controls/OrbitControls.js"></script>
-
-    <style>
-        .viewer-3d-container {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, rgba(100, 50, 150, 0.1) 0%, rgba(50, 100, 150, 0.1) 100%);
-            border-radius: 12px;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-
-        .viewer-info {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-        }
-    </style>
 </head>
 
 <body>
@@ -101,9 +72,24 @@
         <div class="projects-container">
             <!-- Proyecto 1: SetUp Gamer -->
             <div class="project-card glass-card">
-                <div id="canvas-container" class="viewer-3d-container">
-                    <div id="loading-overlay" class="loading-overlay">Cargando modelo…</div>
-                    <div class="viewer-info">🖱️ Arrastra para rotar • 🔍 Scroll para zoom</div>
+                <div id="canvas-3d">
+                    <!-- Loading overlay -->
+                    <div id="loader-overlay">
+                        <div class="loader-spinner"></div>
+                        <span id="loader-text">0%</span>
+                        <div class="loader-bar">
+                            <div id="loader-bar-fill"></div>
+                        </div>
+                    </div>
+
+                    <!-- Scene controls (zoom / reset) -->
+                    <div id="scene-controls">
+                        <button id="zoom-in"  aria-label="Acercar">＋</button>
+                        <button id="zoom-out" aria-label="Alejar">－</button>
+                        <button id="reset-camera" aria-label="Restablecer cámara">↺</button>
+                    </div>
+
+                    <div class="viewer-hint">🖱️ Arrastra para rotar · 🔍 Scroll para zoom</div>
                 </div>
                 <div class="project-info">
                     <h3 class="gradient-text">SetUp Gamer - Modelo 3D Interactivo</h3>
@@ -202,8 +188,8 @@
 
 
     </script>
-    <!-- Script principal para 3D -->
-    <script src="./script.js"></script>
+    <!-- 3D Viewer (ES module) -->
+    <script type="module" src="./scene3d.js"></script>
 
 </body>
 
