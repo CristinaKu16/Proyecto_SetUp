@@ -3,6 +3,16 @@
 // ==========================================
 // 1. LÓGICA DE TEMA (CLARO / OSCURO)
 // ==========================================
+// Hamburger menu toggle (removed, not needed)
+// const menuToggle = document.getElementById('menu-toggle');
+// const navLinks = document.querySelector('.nav-links');
+// if (menuToggle && navLinks) {
+//     menuToggle.addEventListener('click', () => {
+//         navLinks.classList.toggle('open');
+//         menuToggle.classList.toggle('active');
+//     });
+// }
+
 const themeToggleBtn = document.getElementById('theme-toggle');
 const sunIcon = document.querySelector('.sun-icon');
 const moonIcon = document.querySelector('.moon-icon');
@@ -26,6 +36,10 @@ themeToggleBtn.addEventListener('click', () => {
 const container = document.getElementById('canvas-container');
 const loadingOverlay = document.getElementById('loading-overlay');
 
+if (!container || !loadingOverlay) {
+    console.error('No se encontró el contenedor 3D o el overlay de carga. Revisa el HTML.');
+}
+
 // Escena
 const scene = new THREE.Scene();
 
@@ -37,7 +51,7 @@ camera.position.set(0, 3, 6);
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(container.clientWidth, container.clientHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Optimización de rendimiento
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.outputEncoding = THREE.sRGBEncoding;
 container.appendChild(renderer.domElement);
 
 // Controles de Órbita (Zoom, Rotación)
@@ -61,6 +75,7 @@ scene.add(directionalLight);
 // 3. CARGA DEL MODELO GLB/GLTF
 // ==========================================
 const loader = new THREE.GLTFLoader();
+const modelURL = './Assets/SetUpGamer.glb';
 
 /* 
 INSTRUCCIONES: 
@@ -69,8 +84,9 @@ y descomenta el siguiente bloque de código cambiando 'tu_modelo.glb' por el nom
 */
 
 // Load actual model
+console.log('Cargando modelo 3D desde:', modelURL);
 loader.load(
-    './Assets/SetUp Gamer.glb',
+    modelURL,
     (gltf) => {
         const model = gltf.scene;
         scene.add(model);
