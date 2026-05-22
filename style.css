@@ -1471,6 +1471,31 @@ nav ul.nav-links a.active::after {
     backdrop-filter: blur(10px);
 }
 
+/* Spotify modal overlay */
+.spotify-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+.spotify-modal.active {
+    display: flex;
+}
+
+/* Spotify button styling */
+.spotify-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .spotify-modal-content h2 {
     color: var(--text-primary);
     margin-bottom: 1.5rem;
