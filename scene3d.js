@@ -1,27 +1,48 @@
 // scene3d.js – ES-module 3D viewer for SetUp Gamer model
-import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// ── Global error handler ────────────────────────────────
+window.addEventListener('error', (event) => {
+    console.error('⚠️ Error global:', event.error);
+});
+
+window.addEventListener('unhandledrejection', (event) => {
+    console.error('⚠️ Promesa rechazada:', event.reason);
+});
+
+// ── Verify Three.js loaded ──────────────────────────────
+if (typeof THREE === 'undefined' || !THREE.WebGLRenderer) {
+    const errorMsg = 'THREE.js no se cargó correctamente. Verifica tu conexión a internet.';
+    console.error('❌' + errorMsg);
+    throw new Error(errorMsg);
+}
+
+console.log('✓ THREE.js cargado:', THREE.REVISION);
 
 // ── DOM references ──────────────────────────────────────
-const container     = document.getElementById('canvas-3d');
+const container = document.getElementById('canvas-3d');
 const loaderOverlay = document.getElementById('loader-overlay');
-const loaderText    = document.getElementById('loader-text');
+const loaderText = document.getElementById('loader-text');
 const loaderBarFill = document.getElementById('loader-bar-fill');
 const sceneControls = document.getElementById('scene-controls');
-const btnZoomIn     = document.getElementById('zoom-in');
-const btnZoomOut    = document.getElementById('zoom-out');
-const btnReset      = document.getElementById('reset-camera');
+const btnZoomIn = document.getElementById('zoom-in');
+const btnZoomOut = document.getElementById('zoom-out');
+const btnReset = document.getElementById('reset-camera');
 
-if (!container) { console.error('Missing #canvas-3d container'); }
+if (!container) {
+    console.error('Missing #canvas-3d container');
+    throw new Error('Canvas 3D container not found in DOM');
+}
 
 // ── Renderer ────────────────────────────────────────────
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type    = THREE.PCFSoftShadowMap;
-renderer.toneMapping       = THREE.ACESFilmicToneMapping;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.2;
-renderer.outputColorSpace  = THREE.SRGBColorSpace;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(container.clientWidth, container.clientHeight);
 container.appendChild(renderer.domElement);
@@ -30,7 +51,7 @@ container.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 function applySceneBg() {
     const dark = document.body.classList.contains('dark')
-              || !document.body.classList.contains('light-mode');
+        || !document.body.classList.contains('light-mode');
     scene.background = new THREE.Color(dark ? 0x0a0a0f : 0xfdf2f8);
 }
 applySceneBg();
@@ -46,7 +67,7 @@ const camera = new THREE.PerspectiveCamera(
 camera.position.set(0, 3, 6);
 
 // We'll store the initial camera state after model loads
-let initialCameraPos    = camera.position.clone();
+let initialCameraPos = camera.position.clone();
 let initialControlTarget = new THREE.Vector3();
 
 // ── Lighting ────────────────────────────────────────────
@@ -61,16 +82,16 @@ scene.add(hemi);
 // Key light (with shadows)
 const keyLight = new THREE.DirectionalLight(0xfff5e0, 1.6);
 keyLight.position.set(5, 10, 7);
-keyLight.castShadow           = true;
-keyLight.shadow.mapSize.width  = 2048;
+keyLight.castShadow = true;
+keyLight.shadow.mapSize.width = 2048;
 keyLight.shadow.mapSize.height = 2048;
-keyLight.shadow.camera.near    = 0.5;
-keyLight.shadow.camera.far     = 50;
-keyLight.shadow.camera.left    = -10;
-keyLight.shadow.camera.right   = 10;
-keyLight.shadow.camera.top     = 10;
-keyLight.shadow.camera.bottom  = -10;
-keyLight.shadow.bias           = -0.0005;
+keyLight.shadow.camera.near = 0.5;
+keyLight.shadow.camera.far = 50;
+keyLight.shadow.camera.left = -10;
+keyLight.shadow.camera.right = 10;
+keyLight.shadow.camera.top = 10;
+keyLight.shadow.camera.bottom = -10;
+keyLight.shadow.bias = -0.0005;
 scene.add(keyLight);
 
 // Fill light (softer, opposite side)
@@ -85,11 +106,11 @@ scene.add(rimLight);
 
 // ── Controls ────────────────────────────────────────────
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping  = true;
-controls.dampingFactor  = 0.08;
-controls.minDistance     = 1;
-controls.maxDistance     = 30;
-controls.autoRotate     = true;
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 1;
+controls.maxDistance = 30;
+controls.autoRotate = true;
 controls.autoRotateSpeed = 1.5;
 controls.target.set(0, 0.5, 0);
 
@@ -115,7 +136,7 @@ loader.load(
         // Enable shadows on every mesh
         model.traverse((child) => {
             if (child.isMesh) {
-                child.castShadow    = true;
+                child.castShadow = true;
                 child.receiveShadow = true;
             }
         });
@@ -123,48 +144,54 @@ loader.load(
         scene.add(model);
 
         // ── Auto-fit camera to bounding box ──
-        const box    = new THREE.Box3().setFromObject(model);
+        const box = new THREE.Box3().setFromObject(model);
         const center = box.getCenter(new THREE.Vector3());
-        const size   = box.getSize(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
-        const fov    = camera.fov * (Math.PI / 180);
-        let   dist   = (maxDim / 2) / Math.tan(fov / 2);
+        const fov = camera.fov * (Math.PI / 180);
+        let dist = (maxDim / 2) / Math.tan(fov / 2);
         dist *= 1.4; // add some padding
 
         camera.position.set(center.x + dist * 0.5, center.y + dist * 0.35, center.z + dist);
         controls.target.copy(center);
         camera.near = dist / 100;
-        camera.far  = dist * 10;
+        camera.far = dist * 10;
         camera.updateProjectionMatrix();
         controls.update();
 
         // Save initial state for reset button
-        initialCameraPos    = camera.position.clone();
+        initialCameraPos = camera.position.clone();
         initialControlTarget = controls.target.clone();
 
         // Hide loader, show controls
         loaderOverlay.style.opacity = '0';
         setTimeout(() => { loaderOverlay.style.display = 'none'; }, 400);
-        sceneControls.classList.add('visible');
+        sceneControls?.classList.add('visible');
 
         console.log('✓ Modelo 3D cargado correctamente');
     },
     (xhr) => {
-        if (xhr.total) {
+        if (xhr.total && loaderText && loaderBarFill) {
             const pct = Math.round((xhr.loaded / xhr.total) * 100);
-            loaderText.textContent        = `${pct}%`;
-            loaderBarFill.style.width      = `${pct}%`;
+            loaderText.textContent = `${pct}%`;
+            loaderBarFill.style.width = `${pct}%`;
         }
     },
     (err) => {
-        console.error('Error cargando modelo:', err);
-        loaderText.textContent = '❌ Error al cargar';
-        loaderBarFill.style.background = '#ff4444';
+        console.error('❌ Error cargando modelo:', err);
+        if (loaderText) {
+            loaderText.textContent = '❌ Error: No se puede cargar el modelo';
+            loaderText.style.color = '#ff4444';
+        }
+        if (loaderBarFill) {
+            loaderBarFill.style.background = '#ff4444';
+            loaderBarFill.style.width = '100%';
+        }
     }
 );
 
 // ── Zoom & Reset buttons ────────────────────────────────
-const ZOOM_IN_FACTOR  = 0.75;
+const ZOOM_IN_FACTOR = 0.75;
 const ZOOM_OUT_FACTOR = 1.35;
 
 function zoomCamera(factor) {
@@ -175,7 +202,7 @@ function zoomCamera(factor) {
     pauseAutoRotate();
 }
 
-btnZoomIn?.addEventListener('click',  () => zoomCamera(ZOOM_IN_FACTOR));
+btnZoomIn?.addEventListener('click', () => zoomCamera(ZOOM_IN_FACTOR));
 btnZoomOut?.addEventListener('click', () => zoomCamera(ZOOM_OUT_FACTOR));
 
 btnReset?.addEventListener('click', () => {
